@@ -1,0 +1,84 @@
+<div id="header">
+  <div id="menu">
+    <a [ngx-scroll-to]="'#header'" title="Accueil">ACCUEIL</a>
+    <a [ngx-scroll-to]="'#artistes'" title="Artistes">ARTISTES</a>
+    <a [ngx-scroll-to]="'#infos'" title="Infos pratiques">INFOS PRATIQUES</a>
+    <a href="#" title="Partenaires">PARTENAIRES</a>
+  </div>
+</div>
+<div id="fb-video">
+  <iframe src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Flesaiguilleurs%2Fvideos%2F1983169441918671%2F&show_text=false&width=560&mute=false"
+    width="560" height="420" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allowFullScreen="true"></iframe>
+</div>
+<section id="artistes">
+  <h1>ARTISTES</h1>
+  <div class="separator">
+    <span>
+      <i class="fa fa-circle"></i>
+    </span>
+  </div>
+  <div class="portfolio">
+    <div class="img-container" style="background-image: url('assets/img/artistes/flaviacoelho_sonhoreal.jpg')"></div>
+    <div class="description">
+      <perfect-scrollbar>
+        <h2>FLAVIA COELHO</h2>
+        <hr>
+        <p>Brésilienne à l’âme nomade, Flavia Coelho a posé ses bagages en 2006 à Paris. C’est là, avec son complice, le musicien
+          et producteur Victor-Attila Vagh, que la chanteuse originaire de Rio de Janeiro aime composer ses chansons voyageuses.
+          Un registre solaire aux nombreux métissages musicaux, qu’elle partage depuis ses deux premiers opus (Bossa Muffin
+          et Mundo Meu) partout dans le monde, de petites salles en cafés-concerts jusqu’aux plus grands festivals internationaux
+          où elle s’est produite ces dernières années. Afrique du Sud, Australie, Nouvelle-Zélande, Europe et bien sûr Brésil,
+          elle n’a pas arrêté de jouer, donnant plus de cent concerts depuis la sortie en 2014 de Mundo Meu : « Pourquoi s’arrêter ?
+          Il faut battre le fer tant qu’il est chaud ! (rires) », confie la chanteuse qui revient avec un troisième album,
+          Sonho Real (rêve réel) : « Dans mon précédent disque, je parlais de mon monde à moi, du Brésil et de toutes les rencontres
+          que j’ai faites au cours de ces années. Celui-ci est plus tourné vers les autres. J’y évoque la famille, la vie de
+          couple, les problèmes personnels, comment devenir quelqu’un de meilleur, retrouver la paix intérieure. » Et avec
+          cet Opus vient le live, de quoi ravir toutes les oreilles de tous les âges, à la découverte du forro, du dub reggae,
+          du ragga et du ska, des couleurs révélant le métissage artistique de la chanteuse.</p>
+      </perfect-scrollbar>
+    </div>
+  </div>
+  <div id="liste-artistes">
+    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
+      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
+      <div class="artiste-caption">
+        <h3 class="nom">Flavia Cohelo</h3>
+        <p class="style">World</p>
+      </div>
+    </div>
+    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
+      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
+      <div class="artiste-caption">
+        <h3 class="nom">Flavia Cohelo</h3>
+        <p class="style">World</p>
+      </div>
+    </div>
+    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
+      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
+      <div class="artiste-caption">
+        <h3 class="nom">Flavia Cohelo</h3>
+        <p class="style">World</p>
+      </div>
+    </div>
+    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
+      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
+      <div class="artiste-caption">
+        <h3 class="nom">Flavia Cohelo</h3>
+        <p class="style">World</p>
+      </div>
+    </div>
+    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
+      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
+      <div class="artiste-caption">
+        <h3 class="nom">Flavia Cohelo</h3>
+        <p class="style">World</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="infos">
+  <h1>INFOS <span>PRATIQUES</span></h1>
+  <p>GRATUIT <span class="blue">//</span> Dès 16h</p>
+  <p>RESTAURATION SUR PLACE</p>
+</section>

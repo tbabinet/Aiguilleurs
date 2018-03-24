@@ -1,0 +1,291 @@
+#header {
+  height: 100vh;
+  width: 100%;
+  background-image: url("img/header-background.jpg");
+  background-position: top center;
+  background-size: cover;
+}
+
+#menu {
+  position: fixed;
+  z-index: 5;
+  top: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  text-align: right;
+  padding: 15px;
+}
+
+#menu>a {
+  font: 400 .83em/3.183em "Raleway", sans-serif;
+  letter-spacing: .273em;
+  text-transform: uppercase;
+  padding: 7px;
+  padding-left: 0;
+  color: #fff;
+  -webkit-transition: color .3s ease;
+  -o-transition: color .3s ease;
+  transition: color .3s ease;
+  cursor: pointer;
+}
+
+#menu>a:hover {
+  color: #01868b;
+}
+
+#menu>a::after {
+  content: "\B7";
+  font-family: "FontAwesome";
+  font-size: 3.5em;
+  vertical-align: middle;
+  position: relative;
+  margin-left: 7px;
+}
+
+#menu>a:last-child::after {
+  content: "";
+}
+
+#fb-video {
+  background-color: #000;
+  text-align: center;
+}
+
+#fb-video>iframe {
+  width: 100%;
+  max-width: 560px;
+}
+
+#artistes {
+  background-color: #01868b;
+  padding: 100px 30px;
+  text-align: center;
+}
+
+#artistes>h1 {
+  color: #fff;
+  margin: 0;
+  font-size: 3em;
+  font-weight: 300;
+  letter-spacing: .063em;
+  text-transform: uppercase;
+}
+
+.separator {
+  line-height: .5em;
+  margin: 30px 0;
+  color: #fff;
+}
+
+.separator>span {
+  position: relative;
+  display: inline-block;
+}
+
+.separator>span>i.fa {
+  font-size: 6px;
+}
+
+.separator>span::after,
+.separator>span::before {
+  content: "";
+  position: absolute;
+  top: 5px;
+  width: 275px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+}
+
+.separator>span::after {
+  left: 100%;
+  margin-left: 15px;
+}
+
+.separator>span::before {
+  right: 100%;
+  margin-right: 15px;
+}
+
+#artistes>.portfolio {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 800px;
+  margin: 60px auto;
+  height: 400px;
+  background-color: #000;
+}
+
+#artistes>.portfolio>div {
+  width: 50%;
+}
+
+#artistes>.portfolio>.img-container {
+  background-position: center center;
+  background-size: cover;
+}
+
+#artistes>.portfolio>.description {
+  position: relative;
+  text-align: justify;
+  overflow: hidden;
+}
+
+#artistes>.portfolio>.description h2 {
+  color: #01868b;
+  letter-spacing: 3px;
+  font-size: 2em;
+  margin-top: 5px;
+  padding: 10px 10px 0 15px;
+  font-weight: normal;
+}
+
+#artistes>.portfolio>.description hr {
+  margin-bottom: 30px;
+  border-width: .5px;
+  border-color: #888;
+  margin: 0 10px 0 15px;
+}
+
+#artistes>.portfolio>.description p {
+  color: #fff;
+  line-height: 1.7em;
+  padding: 0 10px 0 15px;
+  margin-bottom: 15px;
+}
+
+#liste-artistes {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+  -ms-flex-pack: start;
+  justify-content: flex-start;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+#liste-artistes .artiste {
+  overflow: hidden;
+  position: relative;
+  height: auto;
+  width: 25%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+  cursor: pointer;
+}
+
+#liste-artistes .artiste>.artiste-image {
+  width: 100%;
+  height: 100%;
+  background-position: center center;
+  background-size: cover;
+  -webkit-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+#liste-artistes .artiste>.artiste-caption {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-transform: scale(.2);
+  -ms-transform: scale(.2);
+  transform: scale(.2);
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  text-transform: uppercase;
+  -webkit-transition: all .4s ease;
+  -o-transition: all .4s ease;
+  transition: all .4s ease;
+}
+
+#liste-artistes .artiste>.artiste-image.open {
+  transform: scale(1.25);
+  -ms-transform: scale(1.25);
+  -moz-transform: scale(1.25);
+  -webkit-transform: scale(1.25);
+}
+
+#liste-artistes .artiste>.artiste-caption.open {
+  transform: scale(1);
+  -ms-transform: scale(1);
+  -moz-transform: scale(1);
+  -webkit-transform: scale(1);
+  opacity: 1;
+}
+
+#liste-artistes .artiste>.artiste-caption>h3 {
+  font-size: 1.25em;
+  color: #01868b;
+  letter-spacing: 1px;
+  margin: 0;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+#liste-artistes .artiste>.artiste-caption>p {
+  margin: 0;
+  font-size: 9px;
+  letter-spacing: 0.1em;
+}
+
+#infos {
+  background-color: #000;
+  padding: 60px;
+  h1 {
+    color: #fff;
+    margin-bottom: 90px;
+    text-align: center;
+    font-size: 3.5em;
+    font-weight: 300;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    span {
+      color: #01868b;
+      font-size: 1em;
+      font-family: 'Dosis', sans-serif;
+    }
+  }
+  p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3em;
+    margin-bottom: 50px;
+    text-align: center;
+    letter-spacing: 1px;
+    color: #fff;
+    span.blue {
+      color: #01868b;
+      font-weight: 700;
+      font-size: 1.2em;
+      margin: 0 10px;
+    }
+  }
+}
