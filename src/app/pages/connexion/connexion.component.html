@@ -1,3 +1,10 @@
-<input type="text" #username />
-<input type="password" #password />
-<button (click)="submit(username.value, password.value)">Se connecter</button>
+<div id="connexion-form">
+    <div>
+        <input class="input-group-text" placeholder="Utilisateur" type="text" #username />
+        <input class="input-group-text" placeholder="Mot de passe" type="password" #password />
+    </div>
+    
+    <button class="btn btn-info" (click)="submit(username.value, password.value)">Se connecter</button>
+</div>
+
+
