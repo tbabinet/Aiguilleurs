@@ -8,6 +8,13 @@
   outline: none!important
 }
 
+::selection {
+  color: #fff;
+  background: #01868b;
+  text-shadow: none;
+  text-decoration: none;
+}
+
 body {
   margin: 0;
 }

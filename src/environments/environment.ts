@@ -7,4 +7,4 @@ export const environment = {
   production: false
 };
 
-export const url_api = 'http://127.0.0.1:3000/api';
+export const url_api = 'https://les-aiguilleurs.herokuapp.com/api';
