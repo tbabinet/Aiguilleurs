@@ -17,6 +17,9 @@
 
 <div id="modal" *ngIf="showModal">
   <div>
+    <div class="close" (click)="toggleModal(-1, '')">
+      <i class="fa fa-times"></i>
+    </div>
     <h1>{{ action == 'add' ? 'Ajouter un artiste' : 'Modifier un artiste' }}</h1>
     <input class="input-group-text" type="text" placeholder="Nom" #nom />
     <input class="input-group-text" type="text" placeholder="Style musical" #style />

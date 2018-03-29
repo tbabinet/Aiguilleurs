@@ -108,6 +108,10 @@
     }
     #add-box {
       background-color: rgba(0, 0, 0, 0.3);
+      transition: all .4s ease;
+      &:hover {
+        background-color: rgba(0, 0, 0, 0.4);
+      }
       i.fa {
         font-size: 40px;
         opacity: 0.5;
@@ -127,11 +131,25 @@
   justify-content: center;
   align-items: center;
   & > div {
+    position: relative;
     width: 350px;
     background-color: #01868b;
     box-shadow: 3px 3px 20px #333;
     padding: 40px;
     border-radius: 8px;
+    & > .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+      border-radius: 0 8px 0 8px;
+      background-color: rgba(0, 0, 0, 0.2);
+      i.fa {
+        line-height: 40px;
+      }
+    }
     h1 {
       text-align: center;
       color: #fff;
@@ -154,6 +172,36 @@
       border: 1px solid #ced4da;
       border-radius: .25rem;
       cursor: pointer;
+    }
+  }
+}
+
+@media all and (max-width: 800px) {
+  #admin-page {
+    #liste-artistes {
+      .artiste {
+        width: 33.3333333%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 600px) {
+  #admin-page {
+    #liste-artistes {
+      .artiste {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 420px) {
+  #admin-page {
+    #liste-artistes {
+      .artiste {
+        width: 100%;
+      }
     }
   }
 }
