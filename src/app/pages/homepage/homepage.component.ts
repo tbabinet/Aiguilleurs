@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import * as $ from 'jquery';
 import { HttpClient } from '@angular/common/http';
 import { Artiste } from '../../interfaces/artiste';
@@ -8,19 +9,36 @@ import { ArtistesService } from '../../services/artistes.service';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
-  styleUrls: ['./homepage.component.scss']
+  styleUrls: ['./homepage.component.scss'],
+  animations: [
+    trigger('slideDown', [
+      state('void', style({
+        opacity: 0,
+        height: '0px'
+      })),
+      state('*',   style({
+        opacity: 1,
+        height: '400px'
+      })),
+      transition('void => *', animate('500ms ease-in')),
+      transition('* => void', animate('500ms ease-out'))
+    ])
+  ]
 })
 export class HomepageComponent implements OnInit {
 
   artistes: Artiste[];
+  artisteFocused: Artiste;
 
   constructor(private http:HttpClient, private artisteProvider:ArtistesService) { }
 
   ngOnInit() {
     $(window).resize(calculHeight);
     this.artisteProvider.getArtistes().subscribe(data => {
-      this.artistes = data;
-      setTimeout(calculHeight, 0);
+      if(data) {
+        this.artistes = data;
+        setTimeout(calculHeight, 0);
+      }
     });
   }
 
@@ -30,6 +48,10 @@ export class HomepageComponent implements OnInit {
 
   onMouseLeaveArtiste(e) {
     $(e.srcElement).children().removeClass("open");
+  }
+
+  selectArtiste(artiste) {
+    this.artisteFocused = artiste;
   }
 
 }

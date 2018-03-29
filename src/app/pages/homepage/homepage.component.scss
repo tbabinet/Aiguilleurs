@@ -58,7 +58,7 @@
 
 #artistes {
   background-color: #01868b;
-  padding: 100px 30px;
+  padding: 100px 0;
   text-align: center;
 }
 
@@ -152,6 +152,7 @@
   line-height: 1.7em;
   padding: 0 10px 0 15px;
   margin: 15px 0;
+  text-align: left;
 }
 
 #liste-artistes {
@@ -166,6 +167,7 @@
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
+  margin-top: 50px;
 }
 
 #liste-artistes .artiste {
