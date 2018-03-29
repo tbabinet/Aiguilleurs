@@ -1,3 +1,27 @@
-<p>
-  admin works!
-</p>
+<div id="admin-page">
+  <div id="liste-artistes">
+    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" *ngFor="let a of artistes">
+      <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>
+      <div class="artiste-caption">
+        <h3 class="nom">{{ a.nom }}</h3>
+        <p class="style">{{ a.styleMusical }}</p>
+        <button class="btn btn-primary" (click)="toggleModal(a.id, 'update')">Modifier</button>
+        <button class="btn btn-danger" (click)="deleteArtiste(a.id)">Supprimer</button>
+      </div>
+    </div>
+    <div id="add-box" class="artiste" (click)="toggleModal(-1, 'add')">
+      <i class="fa fa-plus"></i>
+    </div>
+  </div>
+</div>
+
+<div id="modal" *ngIf="showModal">
+  <div>
+    <h1>{{ action == 'add' ? 'Ajouter un artiste' : 'Modifier un artiste' }}</h1>
+    <input class="input-group-text" type="text" placeholder="Nom" #nom />
+    <input class="input-group-text" type="text" placeholder="Style musical" #style />
+    <textarea class="input-group-text" type="text" placeholder="Description" #description></textarea>
+    <input class="input-group-text" type="text" placeholder="URL photo" #photo />
+    <button type="submit" (click)="action == 'add' ? ajouterArtiste(nom.value, style.value, description.value, photo.value) : modifierArtiste(nom.value, style.value, description.value, photo.value)">Valider</button>
+  </div>
+</div>

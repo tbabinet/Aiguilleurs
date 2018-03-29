@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { HttpClient } from '@angular/common/http';
+import { Artiste } from '../../interfaces/artiste';
+import { url_api } from '../../../environments/environment';
+import { ArtistesService } from '../../services/artistes.service';
 
 @Component({
   selector: 'app-homepage',
@@ -8,11 +12,16 @@ import * as $ from 'jquery';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() { }
+  artistes: Artiste[];
+
+  constructor(private http:HttpClient, private artisteProvider:ArtistesService) { }
 
   ngOnInit() {
-    calculHeight();
     $(window).resize(calculHeight);
+    this.artisteProvider.getArtistes().subscribe(data => {
+      this.artistes = data;
+      setTimeout(calculHeight, 0);
+    });
   }
 
   onMouseEnterArtiste(e) {
@@ -26,10 +35,12 @@ export class HomepageComponent implements OnInit {
 }
 
 function calculHeight() {
-  var artistes = document.getElementsByClassName('artiste');
-  for (var i = 0; i < artistes.length; i++) {
-    var a = artistes[i];
-    var width = $(a).css('width');
+  let artistes = document.getElementsByClassName('artiste');
+  console.log(artistes);
+  for (let i = 0; i < artistes.length; i++) {
+    let a = artistes[i];
+    let width = $(a).css('width');
     $(a).css("height", width);
   }
+
 }

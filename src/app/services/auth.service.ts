@@ -19,7 +19,7 @@ export class AuthService {
       return false;
     }
     console.log('Connexion');
-    return this.http.get(`${url_api}/Users/${userId}?access_token=${accessToken}`)
+    return this.http.get(`${url_api}/utilisateurs/${userId}?access_token=${accessToken}`)
       .map((response) => {
         console.log(`Reponse: ${response}`);
         if (response) {
@@ -33,7 +33,7 @@ export class AuthService {
   }
 
   login(username: string, password: string): Observable<boolean> {
-    return this.http.post<LoginResponse>(`${url_api}/Users/login`, { username: username, password: password })
+    return this.http.post<LoginResponse>(`${url_api}/utilisateurs/login`, { username: username, password: password })
       .map(res => {
         if (res) {
           localStorage.setItem('accessToken', res.id);

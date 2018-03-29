@@ -151,7 +151,7 @@
   color: #fff;
   line-height: 1.7em;
   padding: 0 10px 0 15px;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 #liste-artistes {
@@ -311,6 +311,38 @@
     &:hover {
       color: #000;
       background-color: #fff
+    }
+  }
+}
+
+
+
+@media all and (max-width: 850px) {
+  #artistes {
+    #liste-artistes {
+      .artiste {
+        width: 33.3333333%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 650px) {
+  #artistes {
+    #liste-artistes {
+      .artiste {
+        width: 50%;
+      }
+    }
+  }
+}
+
+@media all and (max-width: 450px) {
+  #artistes {
+    #liste-artistes {
+      .artiste {
+        width: 100%;
+      }
     }
   }
 }

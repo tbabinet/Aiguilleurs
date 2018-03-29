@@ -39,39 +39,11 @@
     </div>
   </div>
   <div id="liste-artistes">
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
-      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
+    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" *ngFor="let a of artistes">
+      <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>
       <div class="artiste-caption">
-        <h3 class="nom">Flavia Cohelo</h3>
-        <p class="style">World</p>
-      </div>
-    </div>
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
-      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
-      <div class="artiste-caption">
-        <h3 class="nom">Flavia Cohelo</h3>
-        <p class="style">World</p>
-      </div>
-    </div>
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
-      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
-      <div class="artiste-caption">
-        <h3 class="nom">Flavia Cohelo</h3>
-        <p class="style">World</p>
-      </div>
-    </div>
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
-      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
-      <div class="artiste-caption">
-        <h3 class="nom">Flavia Cohelo</h3>
-        <p class="style">World</p>
-      </div>
-    </div>
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)">
-      <div class="artiste-image" style="background-image: url(assets/img/artistes/flaviacoelho_sonhoreal.jpg)"></div>
-      <div class="artiste-caption">
-        <h3 class="nom">Flavia Cohelo</h3>
-        <p class="style">World</p>
+        <h3 class="nom">{{ a.nom }}</h3>
+        <p class="style">{{ a.styleMusical }}</p>
       </div>
     </div>
   </div>
