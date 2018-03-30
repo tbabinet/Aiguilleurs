@@ -23,7 +23,7 @@
       <perfect-scrollbar>
         <h2>{{ artisteFocused.nom }}</h2>
         <hr>
-        <p>{{ artisteFocused.description }}</p>
+        <p>{{ artisteFocused.description }}<br /><a href="{{ artisteFocused.lien }}">{{ artisteFocused.lien }}</a></p>
       </perfect-scrollbar>
     </div>
   </div>
@@ -35,6 +35,7 @@
         <p class="style">{{ a.styleMusical }}</p>
       </div>
     </div>
+    <p class="error" *ngIf="connectionError"><i class="fa fa-exclamation-triangle"></i><br />Veuillez vérifier votre connexion internet.</p>
   </div>
 </section>
 

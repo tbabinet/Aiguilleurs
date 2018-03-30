@@ -29,6 +29,7 @@ export class HomepageComponent implements OnInit {
 
   artistes: Artiste[];
   artisteFocused: Artiste;
+  connectionError: boolean = false;
 
   constructor(private http:HttpClient, private artisteProvider:ArtistesService) { }
 
@@ -36,9 +37,13 @@ export class HomepageComponent implements OnInit {
     $(window).resize(calculHeight);
     this.artisteProvider.getArtistes().subscribe(data => {
       if(data) {
+        this.connectionError = false;
         this.artistes = data;
         setTimeout(calculHeight, 0);
       }
+    }, err => {
+      console.log(err);
+      this.connectionError = true;
     });
   }
 
@@ -58,7 +63,6 @@ export class HomepageComponent implements OnInit {
 
 function calculHeight() {
   let artistes = document.getElementsByClassName('artiste');
-  console.log(artistes);
   for (let i = 0; i < artistes.length; i++) {
     let a = artistes[i];
     let width = $(a).css('width');
