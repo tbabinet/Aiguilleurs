@@ -18,10 +18,8 @@ export class AuthService {
     if (!accessToken || !userId) {
       return false;
     }
-    console.log('Connexion');
     return this.http.get(`${url_api}/utilisateurs/${userId}?access_token=${accessToken}`)
       .map((response) => {
-        console.log(`Reponse: ${response}`);
         if (response) {
           return true;
         }

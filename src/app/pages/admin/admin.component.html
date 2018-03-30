@@ -71,6 +71,7 @@
     <input class="input-group-text" type="text" placeholder="Style musical" #style />
     <textarea class="input-group-text" type="text" placeholder="Description" #description></textarea>
     <input class="input-group-text" type="text" placeholder="URL photo" #photo />
-    <button type="submit" (click)="action == 'add' ? ajouterArtiste(nom.value, style.value, description.value, photo.value) : modifierArtiste(nom.value, style.value, description.value, photo.value)">Valider</button>
+    <input class="input-group-text" type="text" placeholder="Lien facebook / site web / ..." #lien />
+    <button type="submit" (click)="action == 'add' ? ajouterArtiste(nom.value, style.value, description.value, photo.value, lien.value) : modifierArtiste(nom.value, style.value, description.value, photo.value, lien.value)">Valider</button>
   </div>
 </div>

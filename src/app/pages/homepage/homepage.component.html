@@ -17,35 +17,25 @@
       <i class="fa fa-circle"></i>
     </span>
   </div>
-  <div class="portfolio">
-    <div class="img-container" style="background-image: url('assets/img/artistes/flaviacoelho_sonhoreal.jpg')"></div>
+  <div class="portfolio" *ngIf="artisteFocused" [@slideDown]="artisteFocused">
+    <div class="img-container" [style.backgroundImage]="'url('+ artisteFocused.photo +')'"></div>
     <div class="description">
       <perfect-scrollbar>
-        <h2>FLAVIA COELHO</h2>
+        <h2>{{ artisteFocused.nom }}</h2>
         <hr>
-        <p>Brésilienne à l’âme nomade, Flavia Coelho a posé ses bagages en 2006 à Paris. C’est là, avec son complice, le musicien
-          et producteur Victor-Attila Vagh, que la chanteuse originaire de Rio de Janeiro aime composer ses chansons voyageuses.
-          Un registre solaire aux nombreux métissages musicaux, qu’elle partage depuis ses deux premiers opus (Bossa Muffin
-          et Mundo Meu) partout dans le monde, de petites salles en cafés-concerts jusqu’aux plus grands festivals internationaux
-          où elle s’est produite ces dernières années. Afrique du Sud, Australie, Nouvelle-Zélande, Europe et bien sûr Brésil,
-          elle n’a pas arrêté de jouer, donnant plus de cent concerts depuis la sortie en 2014 de Mundo Meu : « Pourquoi s’arrêter ?
-          Il faut battre le fer tant qu’il est chaud ! (rires) », confie la chanteuse qui revient avec un troisième album,
-          Sonho Real (rêve réel) : « Dans mon précédent disque, je parlais de mon monde à moi, du Brésil et de toutes les rencontres
-          que j’ai faites au cours de ces années. Celui-ci est plus tourné vers les autres. J’y évoque la famille, la vie de
-          couple, les problèmes personnels, comment devenir quelqu’un de meilleur, retrouver la paix intérieure. » Et avec
-          cet Opus vient le live, de quoi ravir toutes les oreilles de tous les âges, à la découverte du forro, du dub reggae,
-          du ragga et du ska, des couleurs révélant le métissage artistique de la chanteuse.</p>
+        <p>{{ artisteFocused.description }}<br /><a href="{{ artisteFocused.lien }}">{{ artisteFocused.lien }}</a></p>
       </perfect-scrollbar>
     </div>
   </div>
   <div id="liste-artistes">
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" *ngFor="let a of artistes">
+    <div class="artiste" (click)="selectArtiste(a)" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" *ngFor="let a of artistes">
       <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>
       <div class="artiste-caption">
         <h3 class="nom">{{ a.nom }}</h3>
         <p class="style">{{ a.styleMusical }}</p>
       </div>
     </div>
+    <p class="error" *ngIf="connectionError"><i class="fa fa-exclamation-triangle"></i><br />Veuillez vérifier votre connexion internet.</p>
   </div>
 </section>
 

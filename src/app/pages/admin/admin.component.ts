@@ -44,7 +44,6 @@ export class AdminComponent implements OnInit {
 
   deleteArtiste(idArtiste) {
     this.artisteProvider.deleteArtiste(idArtiste).subscribe(() => {
-      this.displaySucces("L'artiste a bien été supprimé");
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
         setTimeout(calculHeight, 0);
@@ -52,8 +51,8 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  ajouterArtiste(nom, style, description, photo) {
-    this.artisteProvider.ajouterArtiste(nom, style, description, photo).subscribe((artiste) => {
+  ajouterArtiste(nom, style, description, photo, lien) {
+    this.artisteProvider.ajouterArtiste(nom, style, description, photo, lien).subscribe((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
@@ -62,18 +61,14 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  modifierArtiste(nom, style, description, photo) {
-    this.artisteProvider.modifierArtiste(this.idArtiste, nom, style, description, photo).subscribe((artiste) => {
+  modifierArtiste(nom, style, description, photo, lien) {
+    this.artisteProvider.modifierArtiste(this.idArtiste, nom, style, description, photo, lien).subscribe((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
         setTimeout(calculHeight, 0);
       });
     });
-  }
-
-  displaySucces(message) {
-    console.log(message);
   }
 
 }
