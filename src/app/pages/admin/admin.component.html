@@ -1,19 +1,65 @@
 <div id="admin-page">
-  <div id="liste-artistes">
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" *ngFor="let a of artistes">
-      <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>
-      <div class="artiste-caption">
-        <h3 class="nom">{{ a.nom }}</h3>
-        <p class="style">{{ a.styleMusical }}</p>
-        <button class="btn btn-primary" (click)="toggleModal(a.id, 'update')">Modifier</button>
-        <button class="btn btn-danger" (click)="deleteArtiste(a.id)">Supprimer</button>
+  <div id="accordion">
+    <div class="card">
+      <div class="card-header" id="headingPoster">
+          <h5 class="mb-0">
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#collapsePoster" aria-expanded="true" aria-controls="collapsePoster">
+              Affiche
+            </button>
+          </h5>
+      </div>
+      <div id="collapsePoster" class="collapse" aria-labelledby="headingPoster" data-parent="#accordion">
+          <div class="card-body" id="frm-poster">
+               Formulaire changement Affiche 
+          </div>
       </div>
     </div>
-    <div id="add-box" class="artiste" (click)="toggleModal(-1, 'add')">
-      <i class="fa fa-plus"></i>
+    
+    <div class="card">
+      <div class="card-header" id="headingVideo">
+          <h5 class="mb-0">
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseVideo" aria-expanded="true" aria-controls="collapseVideo">
+              Video
+            </button>
+          </h5>
+      </div>
+      <div id="collapseVideo" class="collapse" aria-labelledby="headingVideo" data-parent="#accordion">
+          <div class="card-body" id="frm-video">
+               Formulaire changement Video 
+          </div>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="card-header" id="headingArtists">
+          <h5 class="mb-0">
+            <button class="btn btn-primary" data-toggle="collapse" data-target="#collapseArtists" aria-expanded="true" aria-controls="collapseArtists">
+              Artistes
+            </button>
+          </h5>
+      </div>
+      <div id="collapseArtists" class="collapse" aria-labelledby="headingArtists" data-parent="#accordion">
+        <div class="card-body" id="liste-artistes">
+            <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" *ngFor="let a of artistes">
+              <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>
+              <div class="artiste-caption">
+                <h3 class="nom">{{ a.nom }}</h3>
+                <p class="style">{{ a.styleMusical }}</p>
+                <button class="btn btn-primary" (click)="toggleModal(a.id, 'update')">Modifier</button>
+                <button class="btn btn-danger" (click)="deleteArtiste(a.id)">Supprimer</button>
+              </div>
+            </div>
+            <div id="add-box" class="artiste" (click)="toggleModal(-1, 'add')">
+              <i class="fa fa-plus"></i>
+            </div>
+          </div>
+      </div>
     </div>
   </div>
 </div>
+
+
+
 
 <div id="modal" *ngIf="showModal">
   <div>
