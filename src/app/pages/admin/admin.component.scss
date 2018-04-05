@@ -2,6 +2,36 @@
   background-color: #01868b;
   min-height: 100vh;
   position: relative;
+  #options {
+    text-align: center;
+    padding: 40px 10px;
+    &>a {
+      font: 400 .83em/3.183em "Raleway", sans-serif;
+      letter-spacing: .273em;
+      text-transform: uppercase;
+      padding: 7px;
+      padding-left: 0;
+      color: #fff;
+      -webkit-transition: color .3s ease;
+      -o-transition: color .3s ease;
+      transition: color .3s ease;
+      cursor: pointer;
+      &.active {
+        color: #e2a433;
+      }
+    }
+    &>a::after {
+      content: "\B7";
+      font-family: "FontAwesome";
+      font-size: 3.5em;
+      vertical-align: middle;
+      position: relative;
+      margin-left: 7px;
+    }
+    &>a:last-child::after {
+      content: "";
+    }
+  }
   #liste-artistes {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -119,13 +149,42 @@
     }
   }
 
-  #accordion>*{
-    background-color: #01868b;
-    border-color: #01868b; 
-
-    
+  #update-affiche {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 30px;
+    &>div {
+      text-align: center;
+      color: #fff;
+      flex: 1;
+      img {
+        max-width: 50%;
+      }
+      h1 {
+        margin-bottom: 30px;
+      }
+      input {
+        cursor: pointer;
+      }
+      input[type="submit"] {
+        display: block;
+        width: 150px;
+        margin: auto;
+        margin-top: 25px;
+        border: 1px solid #fff;
+        border-radius: 15px;
+        padding: 7px;
+        color: #fff;
+        background-color: transparent;
+        transition: all .3s ease;
+        &:hover {
+          border-color: #e2a433;
+          color: #e2a433;
+        }
+      }
+    }
   }
-  
 }
 
 #modal {
@@ -138,14 +197,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  & > div {
+  &>div {
     position: relative;
     width: 350px;
     background-color: #01868b;
     box-shadow: 3px 3px 20px #333;
     padding: 40px;
     border-radius: 8px;
-    & > .close {
+    &>.close {
       position: absolute;
       top: 0;
       right: 0;
@@ -163,7 +222,8 @@
       color: #fff;
       margin-bottom: 30px;
     }
-    input, textarea {
+    input,
+    textarea {
       margin-bottom: 20px;
       width: 100%;
       text-align: left;

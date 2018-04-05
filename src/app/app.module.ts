@@ -10,6 +10,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 
 import { AuthService } from './services/auth.service';
 import { ArtistesService } from './services/artistes.service';
+import { FileService } from './services/files.service';
 
 import { AuthGuard } from './guards/auth.guard';
 
@@ -46,6 +47,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     },
     AuthService,
     ArtistesService,
+    FileService,
     AuthGuard
   ],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Artiste } from '../../interfaces/artiste';
 import { url_api } from '../../../environments/environment';
 import { ArtistesService } from '../../services/artistes.service';
+import { FileService } from '../../services/files.service';
 
 @Component({
   selector: 'app-admin',
@@ -12,13 +13,16 @@ import { ArtistesService } from '../../services/artistes.service';
 })
 export class AdminComponent implements OnInit {
 
+  option: number = 1;
   artistes: Artiste[];
   succes: boolean;
   showModal: boolean = false;
   idArtiste: number;
   action: string;
+  accessToken: string = localStorage.getItem('accessToken');
+  formUrl: string = `${url_api}/Containers/media/upload?access_token=${this.accessToken}`
 
-  constructor(private http: HttpClient, private artisteProvider: ArtistesService) { }
+  constructor(private http: HttpClient, private artisteProvider: ArtistesService, private fs: FileService) { }
 
   ngOnInit() {
     $(window).resize(calculHeight);
@@ -26,6 +30,13 @@ export class AdminComponent implements OnInit {
       this.artistes = data;
       setTimeout(calculHeight, 0);
     });
+  }
+
+  setOption(page: number) {
+    this.option = page;
+    if(page == 1) {
+      setTimeout(calculHeight, 0);
+    }
   }
 
   onMouseEnterArtiste(e) {
@@ -69,6 +80,11 @@ export class AdminComponent implements OnInit {
         setTimeout(calculHeight, 0);
       });
     });
+  }
+
+  onAfficheSubmit(e) {
+    const fileName = e.target[0].files[0].name;
+    this.fs.setAffiche(fileName).subscribe();
   }
 
 }

@@ -1,12 +1,14 @@
 #header {
   height: 100vh;
   width: 100%;
-  background-image: url("img/header-background.jpg");
   background-position: top center;
   background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-#menu {
+nav {
   position: fixed;
   z-index: 5;
   top: 0;
@@ -14,9 +16,20 @@
   background-color: rgba(0, 0, 0, 0);
   text-align: right;
   padding: 15px;
+  transition: all .2s ease;
 }
 
-#menu>a {
+nav.scrolled {
+  background-color: #18191b !important;
+  border-bottom: 1px solid #333;
+  color: #fff;
+}
+
+nav .navbar-collapse {
+  text-align: center;
+}
+
+nav .nav-item a {
   font: 400 .83em/3.183em "Raleway", sans-serif;
   letter-spacing: .273em;
   text-transform: uppercase;
@@ -29,11 +42,12 @@
   cursor: pointer;
 }
 
-#menu>a:hover {
+nav .nav-item a:hover {
   color: #01868b;
+  text-decoration: none;
 }
 
-#menu>a::after {
+nav .nav-item a::after {
   content: "\B7";
   font-family: "FontAwesome";
   font-size: 3.5em;
@@ -42,18 +56,19 @@
   margin-left: 7px;
 }
 
-#menu>a:last-child::after {
+nav .nav-item:last-child a::after {
   content: "";
 }
 
 #fb-video {
   background-color: #000;
   text-align: center;
-}
-
-#fb-video>iframe {
-  width: 100%;
-  max-width: 560px;
+  video {
+    display: inline-block;
+    width: 90%;
+    margin: auto;
+    max-width: 700px;
+  }
 }
 
 #artistes {
@@ -91,7 +106,8 @@
   content: "";
   position: absolute;
   top: 5px;
-  width: 275px;
+  width: 35vw;
+  max-width: 275px;
   border-bottom-width: 1px;
   border-bottom-style: solid;
 }
@@ -110,14 +126,16 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 800px;
+  width: 95%;
+  max-width: 800px;
   margin: 60px auto;
   height: 400px;
-  background-color: #000;
+  background-color: #18191b;
 }
 
 #artistes>.portfolio>div {
   width: 50%;
+  height: 400px;
 }
 
 #artistes>.portfolio>.img-container {
@@ -133,6 +151,7 @@
 
 #artistes>.portfolio>.description h2 {
   color: #01868b;
+  text-align: left;
   letter-spacing: 3px;
   font-size: 2em;
   margin-top: 5px;
@@ -155,6 +174,10 @@
   text-align: left;
 }
 
+#artistes>.portfolio>.description a:hover {
+  color: #e1a631;
+}
+
 #liste-artistes {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -170,14 +193,14 @@
   margin-top: 50px;
 }
 
-#liste-artistes .error {
+.error {
   width: 100%;
   text-align: center;
   color: #e1a631;
   font-size: 1.2em;
 }
 
-#liste-artistes .error .fa {
+.error .fa {
   font-size: 2em;
   margin-bottom: 15px;
 }
@@ -216,6 +239,9 @@
   position: absolute;
   height: 100%;
   width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 10;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -272,8 +298,8 @@
 }
 
 #infos {
-  background-color: #000;
-  padding: 60px;
+  background-color: #18191b;
+  padding: 60px 15px;
   text-align: center;
   h1 {
     color: #fff;
@@ -288,6 +314,9 @@
       font-size: 1em;
       font-family: 'Dosis', sans-serif;
     }
+  }
+  iframe {
+    max-width: 600px;
   }
   & > p {
     font-family: 'Raleway', sans-serif;
@@ -323,7 +352,7 @@
     margin: 15px auto;
     transition: all .4s ease;
     &:hover {
-      color: #000;
+      color: #18191b;
       background-color: #fff
     }
   }
@@ -348,6 +377,23 @@
         width: 50%;
       }
     }
+  }
+}
+
+@media all and (max-width: 575px) {
+  nav {
+    background-color: #18191b !important;
+    border-bottom: 1px solid #333;
+    color: #fff;
+  }
+  nav .nav-item a::after {
+    content: "";
+  }
+}
+
+@media all and (max-width: 500px) {
+  #header {
+    height: 500px;
   }
 }
 
