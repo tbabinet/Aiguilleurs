@@ -10,7 +10,7 @@
 
 nav {
   position: fixed;
-  z-index: 5;
+  z-index: 10;
   top: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
@@ -63,11 +63,11 @@ nav .nav-item:last-child a::after {
 #fb-video {
   background-color: #000;
   text-align: center;
-  video {
-    display: inline-block;
-    width: 90%;
-    margin: auto;
-    max-width: 700px;
+  app-video {
+    video {
+      width: 90%;
+      max-width: 700px;
+    }
   }
 }
 
@@ -399,9 +399,11 @@ nav .nav-item:last-child a::after {
 
 @media all and (max-width: 420px) {
   #artistes {
-    #liste-artistes {
-      .artiste {
-        width: 100%;
+    &>.portfolio {
+      flex-direction: column;
+      &>div {
+      width: 100%;
+      height: 200px;
       }
     }
   }

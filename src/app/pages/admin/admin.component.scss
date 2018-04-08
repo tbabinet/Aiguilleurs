@@ -149,17 +149,21 @@
     }
   }
 
-  #update-affiche {
+  #update-affiche, #update-video {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding-bottom: 30px;
+    padding: 30px 0;
     &>div {
       text-align: center;
       color: #fff;
       flex: 1;
       img {
-        max-width: 50%;
+        width: 90%;
+        max-width: 370px;
+      }
+      video {
+        width: 90%;
       }
       h1 {
         margin-bottom: 30px;
@@ -173,7 +177,7 @@
         margin: auto;
         margin-top: 25px;
         border: 1px solid #fff;
-        border-radius: 15px;
+        border-radius: 30px;
         padding: 7px;
         color: #fff;
         background-color: transparent;

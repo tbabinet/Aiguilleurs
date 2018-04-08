@@ -73,11 +73,9 @@ export class HomepageComponent implements OnInit {
   onScroll() {
     if(!this.scrolled && window.pageYOffset > 100) {
       this.scrolled = true;
-      console.log(this.scrolled);
     }
     else if(this.scrolled && window.pageYOffset <= 100) {
       this.scrolled = false;
-      console.log(this.scrolled);
     }
   }
 

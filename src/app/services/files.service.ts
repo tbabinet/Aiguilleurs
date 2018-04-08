@@ -22,4 +22,8 @@ export class FileService {
   setAffiche(name: string) {
     return this.http.post<File>(`${url_api}/assets/update?where=%7B%22name%22%3A%20%22affiche%22%7D&access_token=${this.accessToken}`, {url: name});
   }
+
+  setVideo(name: string) {
+    return this.http.post<File>(`${url_api}/assets/update?where=%7B%22name%22%3A%20%22video%22%7D&access_token=${this.accessToken}`, {url: name});
+  }
 }

@@ -23,11 +23,24 @@
 
   <div id="update-affiche" *ngSwitchCase="2">
     <div>
-      <img src="../../../assets/img/affiche.jpg" alt="Affiche">
+      <img src="{{ afficheUrl }}" alt="Affiche">
     </div>
     <div>
       <form action="{{ formUrl }}" method="POST" enctype="multipart/form-data" target="_blank" (submit)="onAfficheSubmit($event)">
         <h1>Modifier l'affiche</h1>
+        <input name="file" type="file">
+        <input type="submit" value="Modifier">
+      </form>
+    </div>
+  </div>
+
+  <div id="update-video" *ngSwitchCase="3">
+    <div>
+      <app-video src="{{ videoUrl }}"></app-video>
+    </div>
+    <div>
+      <form action="{{ formUrl }}" method="POST" enctype="multipart/form-data" target="_blank" (submit)="onVideoSubmit($event)">
+        <h1>Modifier la vidéo</h1>
         <input name="file" type="file">
         <input type="submit" value="Modifier">
       </form>

@@ -20,7 +20,9 @@ export class AdminComponent implements OnInit {
   idArtiste: number;
   action: string;
   accessToken: string = localStorage.getItem('accessToken');
-  formUrl: string = `${url_api}/Containers/media/upload?access_token=${this.accessToken}`
+  formUrl: string = `${url_api}/Containers/media/upload?access_token=${this.accessToken}`;
+  afficheUrl: string;
+  videoUrl: string;
 
   constructor(private http: HttpClient, private artisteProvider: ArtistesService, private fs: FileService) { }
 
@@ -29,6 +31,21 @@ export class AdminComponent implements OnInit {
     this.artisteProvider.getArtistes().subscribe(data => {
       this.artistes = data;
       setTimeout(calculHeight, 0);
+    });
+
+    this.fs.getAssets().subscribe(data => {
+      data.forEach(f => {
+        switch (f.name) {
+          case 'affiche':
+            this.afficheUrl = `${url_api}/Containers/media/download/${f.url}`;
+            break;
+          case 'video':
+            this.videoUrl = `${url_api}/Containers/media/download/${f.url}`;
+            break;
+          default:
+            break;
+        }
+      });
     });
   }
 
@@ -85,6 +102,11 @@ export class AdminComponent implements OnInit {
   onAfficheSubmit(e) {
     const fileName = e.target[0].files[0].name;
     this.fs.setAffiche(fileName).subscribe();
+  }
+
+  onVideoSubmit(e) {
+    const fileName = e.target[0].files[0].name;
+    this.fs.setVideo(fileName).subscribe();
   }
 
 }
