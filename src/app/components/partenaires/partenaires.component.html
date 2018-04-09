@@ -19,7 +19,7 @@
     </div>
     <h1>{{ action == 'add' ? 'Ajouter un partenaire' : 'Modifier un partenaire' }}</h1>
     <input class="input-group-text" type="text" placeholder="Nom" #nom />
-    <input class="input-group-text" type="text" placeholder="Image" #image></textarea>
+    <input class="input-group-text" type="text" placeholder="Image" #image />
     <input class="input-group-text" type="text" placeholder="Lien facebook / site web / ..." #url />
     <button type="submit" (click)="action == 'add' ? ajouterPartenaire(nom.value, image.value, url.value) : modifierPartenaire(nom.value, image.value, url.value)">Valider</button>
   </div>
