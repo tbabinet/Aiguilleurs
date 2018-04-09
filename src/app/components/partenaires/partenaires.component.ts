@@ -44,6 +44,9 @@ export class PartenairesComponent implements OnInit {
     this.partenaireProvider.ajouterPartenaire(nom, image, url).subscribe();
   }
 
+  deletePartenaire(id){
+    this.partenaireProvider.deletePartenaire(id).subscribe();
+  }
 }
 
 function calculHeight() {
