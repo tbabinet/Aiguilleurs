@@ -273,6 +273,14 @@
       }
     }
   }
+
+  #update-affiche,
+  #update-video {
+    flex-direction: column-reverse;
+    &>div {
+      margin-bottom: 30px;
+    }
+  }
 }
 
 @media all and (max-width: 420px) {

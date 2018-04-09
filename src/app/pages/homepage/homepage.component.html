@@ -79,6 +79,25 @@
   <a href="http://www.sum-asso.com" class="more">EN SAVOIR PLUS</a>
 </section>
 
-<section id="partenaires">
+<div id="partenaires" [style.backgroundColor]="colors['main_color']">
+  <h1>PARTENAIRES</h1>
+  <div class="separator">
+    <span>
+      <i class="fa fa-circle"></i>
+    </span>
+  </div>
+  <div id="partenaires-container">
+    <div class="partenaire" *ngFor="let p of partenaires">
+      <a href="{{ p.url }}">
+        <img src="{{ p.image }}" alt="{{ p.nom }}">
+      </a>
+    </div>
+  </div>
+</div>
 
-</section>
+<footer [style.backgroundColor]="colors['second_color']">
+  <p>Sum  Asso © 2018</p>
+  <p>Design : Florence Trouvat</p>
+  <p>Conception: Grégoire Rabasse &amp; Timothée Babinet</p>
+  <p>Tous droits réservés</p>
+</footer>

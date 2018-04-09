@@ -6,6 +6,8 @@ import { Artiste } from '../../interfaces/artiste';
 import { url_api } from '../../../environments/environment';
 import { ArtistesService } from '../../services/artistes.service';
 import { FileService } from '../../services/files.service';
+import { Partenaire } from '../../interfaces/partenaires';
+import { PartenairesService } from '../../services/partenaires.service';
 
 @Component({
   selector: 'app-homepage',
@@ -36,8 +38,9 @@ export class HomepageComponent implements OnInit {
   descriptionOnFocus: string[];
   connectionError: boolean = false;
   colors: {main_color: string, second_color: string} = {main_color: "#01868b", second_color: "#333"};
+  partenaires: Partenaire[];
 
-  constructor(private http:HttpClient, private artisteProvider:ArtistesService, private fs:FileService) {
+  constructor(private http:HttpClient, private artisteProvider:ArtistesService, private partenaireProvider: PartenairesService, private fs:FileService) {
    }
 
   ngOnInit() {
@@ -67,6 +70,10 @@ export class HomepageComponent implements OnInit {
             break;
         }
       });
+    });
+
+    this.partenaireProvider.getPartenaire().subscribe(data => {
+      this.partenaires = data;
     });
 
     this.fs.getColors().subscribe(data => {
