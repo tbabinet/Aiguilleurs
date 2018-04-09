@@ -1,13 +1,14 @@
-<div id="admin-page" [ngSwitch]="option">
+<div id="admin-page" [ngSwitch]="option" [style.backgroundColor]="colors.main_color">
 
   <div id="options">
     <a (click)="setOption(1)" [class.active]="option == 1">Artistes</a>
     <a (click)="setOption(2)" [class.active]="option == 2">Affiche</a>
     <a (click)="setOption(3)" [class.active]="option == 3">Vidéo</a>
+    <a (click)="setOption(4)" [class.active]="option == 4">Réglages</a>
   </div>
 
   <div id="liste-artistes" *ngSwitchCase="1">
-    <div class="artiste" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" *ngFor="let a of artistes">
+    <div class="artiste" *ngFor="let a of artistes">
       <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>
       <div class="artiste-caption">
         <h3 class="nom">{{ a.nom }}</h3>
@@ -46,6 +47,8 @@
       </form>
     </div>
   </div>
+
+  <profil-settings *ngSwitchCase='4'></profil-settings>
 </div>
 
 

@@ -19,6 +19,7 @@ import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { VideoComponent } from './components/video/video.component';
+import { ProfilSettingsComponent } from './components/profil-settings/profil-settings.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -32,7 +33,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     HomepageComponent,
     ConnexionComponent,
     AdminComponent,
-    VideoComponent
+    VideoComponent,
+    ProfilSettingsComponent
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@ export class AdminComponent implements OnInit {
   formUrl: string = `${url_api}/Containers/media/upload?access_token=${this.accessToken}`;
   afficheUrl: string;
   videoUrl: string;
+  colors: {main_color: string, second_color: string} = {main_color: '', second_color: ''};
 
   constructor(private http: HttpClient, private artisteProvider: ArtistesService, private fs: FileService) { }
 
@@ -31,6 +32,10 @@ export class AdminComponent implements OnInit {
     this.artisteProvider.getArtistes().subscribe(data => {
       this.artistes = data;
       setTimeout(calculHeight, 0);
+    });
+
+    this.fs.getColors().subscribe(colors => {
+      this.colors = colors;
     });
 
     this.fs.getAssets().subscribe(data => {
@@ -54,14 +59,6 @@ export class AdminComponent implements OnInit {
     if(page == 1) {
       setTimeout(calculHeight, 0);
     }
-  }
-
-  onMouseEnterArtiste(e) {
-    $(e.srcElement).children().addClass("open");
-  }
-
-  onMouseLeaveArtiste(e) {
-    $(e.srcElement).children().removeClass("open");
   }
 
   toggleModal(idArtiste, action) {
@@ -107,6 +104,10 @@ export class AdminComponent implements OnInit {
   onVideoSubmit(e) {
     const fileName = e.target[0].files[0].name;
     this.fs.setVideo(fileName).subscribe();
+  }
+
+  changeMainColor() {
+    console.log('Change color !');
   }
 
 }

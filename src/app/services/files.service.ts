@@ -26,4 +26,16 @@ export class FileService {
   setVideo(name: string) {
     return this.http.post<File>(`${url_api}/assets/update?where=%7B%22name%22%3A%20%22video%22%7D&access_token=${this.accessToken}`, {url: name});
   }
+
+  setMainColor(color: string) {
+    return this.http.post<string>(`${url_api}/assets/changeColor?access_token=${this.accessToken}`, {color: color, nameOfColor: 'main'});
+  }
+
+  setSecondColor(color: string) {
+    return this.http.post<string>(`${url_api}/assets/changeColor?access_token=${this.accessToken}`, {color: color, nameOfColor: 'second'});
+  }
+
+  getColors() {
+    return this.http.get<{main_color: string, second_color: string}>('../../../assets/config.json');
+  }
 }

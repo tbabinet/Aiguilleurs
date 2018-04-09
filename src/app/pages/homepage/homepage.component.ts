@@ -35,6 +35,7 @@ export class HomepageComponent implements OnInit {
   artisteFocused: Artiste;
   descriptionOnFocus: string[];
   connectionError: boolean = false;
+  colors: {main_color: string, second_color: string} = {main_color: "#01868b", second_color: "#333"};
 
   constructor(private http:HttpClient, private artisteProvider:ArtistesService, private fs:FileService) {
    }
@@ -67,6 +68,11 @@ export class HomepageComponent implements OnInit {
         }
       });
     });
+
+    this.fs.getColors().subscribe(data => {
+      console.log(data);
+      this.colors = data;
+    });
   }
 
   @HostListener('window:scroll')
@@ -77,14 +83,6 @@ export class HomepageComponent implements OnInit {
     else if(this.scrolled && window.pageYOffset <= 100) {
       this.scrolled = false;
     }
-  }
-
-  onMouseEnterArtiste(e) {
-    $(e.srcElement).children().addClass("open");
-  }
-
-  onMouseLeaveArtiste(e) {
-    $(e.srcElement).children().removeClass("open");
   }
 
   selectArtiste(artiste : Artiste) {

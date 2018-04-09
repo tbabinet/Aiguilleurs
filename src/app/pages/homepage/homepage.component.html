@@ -28,7 +28,7 @@
 <div id="fb-video">
   <app-video src="{{ video }}"></app-video>
 </div>
-<section id="artistes">
+<section id="artistes" [style.backgroundColor]="colors['main_color']">
   <h1>ARTISTES</h1>
   <div class="separator">
     <span>
@@ -39,7 +39,7 @@
     <div class="img-container" [style.backgroundImage]="'url('+ artisteFocused.photo +')'"></div>
     <div class="description">
       <perfect-scrollbar>
-        <h2>{{ artisteFocused.nom }}</h2>
+        <h2 [style.color]="colors['main_color']">{{ artisteFocused.nom }}</h2>
         <hr>
         <p *ngFor="let d of descriptionOnFocus">{{ d }}</p>
         <p><a href="{{ artisteFocused.lien }}">{{ artisteFocused.lien }}</a></p>
@@ -48,10 +48,10 @@
   </div>
   <div class="loader" *ngIf="!artistes && !connectionError"><svg width="200px"  height="200px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-eclipse" style="background: none;"><path stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#e1a533" transform="rotate(108 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path></svg></div>
   <div id="liste-artistes">
-    <div class="artiste" (click)="selectArtiste(a)" (mouseenter)="onMouseEnterArtiste($event)" (mouseleave)="onMouseLeaveArtiste($event)" [ngx-scroll-to]="'#artistes'" *ngFor="let a of artistes">
+    <div class="artiste" (click)="selectArtiste(a)" [ngx-scroll-to]="'#artistes'" *ngFor="let a of artistes">
       <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>
       <div class="artiste-caption">
-        <h3 class="nom">{{ a.nom }}</h3>
+        <h3 class="nom" [style.color]="colors['main_color']">{{ a.nom }}</h3>
         <p class="style">{{ a.styleMusical }}</p>
       </div>
     </div>
@@ -59,14 +59,14 @@
   </div>
 </section>
 
-<section id="infos">
-  <h1>INFOS <span>PRATIQUES</span></h1>
-  <p>GRATUIT <span class="blue">//</span> Dès 16h</p>
+<section id="infos" [style.backgroundColor]="colors['second_color']">
+  <h1>INFOS <span [style.color]="colors['main_color']">PRATIQUES</span></h1>
+  <p>GRATUIT <span class="blue" [style.color]="colors['main_color']">//</span> Dès 16h</p>
   <p>RESTAURATION SUR PLACE</p>
   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2626.73057163214!2d2.2162744278962374!3d48.82520193820314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e67b0f14192369%3A0xe7475a213ac2e2a7!2sSquare+Carrier+Belleuse%2C+92310+S%C3%A8vres!5e0!3m2!1sfr!2sfr!4v1494573306210" width="100%" height="220" frameborder="0" style="border:0" allowfullscreen=""></iframe>
   <p>Square Carrier Belleuse, 92310 Sèvres</p>
   <p>Métro Ligne 9 : Pont de Sèvres<br />Tramway T2 : Musée de sèvres<br />Bus 171, 426, 179, 169<br/>Voiture : N118, D910, RD7</p>
-  <p class="contact">CONTACT : <a href="mailto:infos@lesaiguilleurs.fr">INFOS@LESAIGUILLEURS.FR</a></p>
+  <p class="contact">CONTACT : <a href="mailto:infos@lesaiguilleurs.fr" [style.color]="colors['main_color']">INFOS@LESAIGUILLEURS.FR</a></p>
 
   <div class="separator">
     <span>

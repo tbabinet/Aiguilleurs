@@ -42,4 +42,9 @@ export class AuthService {
       .catch((err: HttpErrorResponse) => { return Observable.throw(err.message) });
   }
 
+  changePassword(oldPassword: string, newPassword: string) {
+    let accessToken = localStorage.getItem('accessToken');
+    return this.http.post(`${url_api}/utilisateurs/change-password?access_token=${accessToken}`, {oldPassword: oldPassword, newPassword: newPassword});
+  }
+
 }
