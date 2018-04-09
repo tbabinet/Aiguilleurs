@@ -38,9 +38,9 @@ export class PartenairesComponent implements OnInit {
   }
 
   ajouterPartenaire(e) {
-    const nom = $(e.target).siblings()[0];
+    const nom = $(e.target).siblings()[0].value;
     const image = $(e.target).siblings()[1].files[0].name;
-    const url = $(e.target).siblings()[2];
+    const url = $(e.target).siblings()[2].value;
     this.partenaireProvider.ajouterPartenaire(nom, image, url).subscribe();
   }
 
