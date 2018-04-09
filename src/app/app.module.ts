@@ -21,7 +21,7 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { VideoComponent } from './components/video/video.component';
 import { ProfilSettingsComponent } from './components/profil-settings/profil-settings.component';
 import { PartenairesComponent } from './components/partenaires/partenaires.component';
-import { PartenairesService } from './services/partenaires.services';
+import { PartenairesService } from './services/partenaires.service';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,

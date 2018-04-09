@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { PartenairesService } from '../../services/partenaires.services';
+import { PartenairesService } from '../../services/partenaires.service';
 import { Partenaire } from '../../interfaces/partenaires';
 import { HttpClient } from '@angular/common/http';
 import { FileService } from '../../services/files.service';
 import * as $ from 'jquery';
+import { url_api } from '../../../environments/environment';
 
 @Component({
   selector: 'partenaires',
@@ -16,6 +17,8 @@ export class PartenairesComponent implements OnInit {
   showModal: boolean = false;
   idPartenaire : number;
   action : string;
+  accessToken: string = localStorage.getItem('accessToken');
+  formUrl: string = url_api + `/Containers/partenaires/upload?access_token=${this.accessToken}`;
 
 
   constructor(private http : HttpClient, private partenaireProvider : PartenairesService, private fs : FileService) { }
@@ -34,12 +37,19 @@ export class PartenairesComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
+  ajouterPartenaire(e) {
+    const nom = $(e.target).siblings()[0];
+    const image = $(e.target).siblings()[1].files[0].name;
+    const url = $(e.target).siblings()[2];
+    this.partenaireProvider.ajouterPartenaire(nom, image, url).subscribe();
+  }
+
 }
 
 function calculHeight() {
-  let artistes = document.getElementsByClassName('artiste');
-  for (let i = 0; i < artistes.length; i++) {
-    let a = artistes[i];
+  let partenaires = document.getElementsByClassName('partenaire');
+  for (let i = 0; i < partenaires.length; i++) {
+    let a = partenaires[i];
     let width = $(a).css('width');
     $(a).css("height", width);
   }

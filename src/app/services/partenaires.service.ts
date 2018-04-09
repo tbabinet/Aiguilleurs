@@ -24,12 +24,13 @@ export class PartenairesService{
 
     ajouterPartenaire(nom, image, url){
         const access_token = localStorage.getItem('accessToken');
+        const m = `${url_api}/Containers/partenaires/download/${image}`;
         return this.http.post(`${url_api}/partenaires?access_token=${access_token}`, {
             nom : nom,
-            image : image,
+            image : m,
             url : url
         });
-    } 
+    }
 
     modifierPartenaire(id, nom, image, url){
         const accessToken = localStorage.getItem('accessToken');
