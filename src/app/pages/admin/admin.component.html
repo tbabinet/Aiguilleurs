@@ -5,6 +5,7 @@
     <a (click)="setOption(2)" [class.active]="option == 2">Affiche</a>
     <a (click)="setOption(3)" [class.active]="option == 3">Vidéo</a>
     <a (click)="setOption(4)" [class.active]="option == 4">Réglages</a>
+    <a (click)="setOption(5)" [class.active]="option == 5">Partenaires</a>
   </div>
 
   <div id="liste-artistes" *ngSwitchCase="1">
@@ -49,6 +50,8 @@
   </div>
 
   <profil-settings *ngSwitchCase='4'></profil-settings>
+
+  <partenaires *ngSwitchCase='5'></partenaires>
 </div>
 
 

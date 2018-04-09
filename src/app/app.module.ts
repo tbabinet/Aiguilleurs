@@ -20,6 +20,8 @@ import { ConnexionComponent } from './pages/connexion/connexion.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { VideoComponent } from './components/video/video.component';
 import { ProfilSettingsComponent } from './components/profil-settings/profil-settings.component';
+import { PartenairesComponent } from './components/partenaires/partenaires.component';
+import { PartenairesService } from './services/partenaires.services';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -34,7 +36,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     ConnexionComponent,
     AdminComponent,
     VideoComponent,
-    ProfilSettingsComponent
+    ProfilSettingsComponent,
+    PartenairesComponent
   ],
   imports: [
     BrowserModule,
@@ -52,6 +55,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AuthService,
     ArtistesService,
     FileService,
+    PartenairesService,
     AuthGuard
   ],
   bootstrap: [AppComponent]
