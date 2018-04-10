@@ -7,21 +7,23 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
+import { ConnexionComponent } from './pages/connexion/connexion.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 import { AuthService } from './services/auth.service';
 import { ArtistesService } from './services/artistes.service';
 import { FileService } from './services/files.service';
+import { PartenairesService } from './services/partenaires.service';
 
 import { AuthGuard } from './guards/auth.guard';
 
 import { PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
-import { ConnexionComponent } from './pages/connexion/connexion.component';
-import { AdminComponent } from './pages/admin/admin.component';
+
 import { VideoComponent } from './components/video/video.component';
 import { ProfilSettingsComponent } from './components/profil-settings/profil-settings.component';
 import { PartenairesComponent } from './components/partenaires/partenaires.component';
-import { PartenairesService } from './services/partenaires.service';
+import { EditArtistesComponent } from './components/edit-artistes/edit-artistes.component';
 
 const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
   suppressScrollX: true,
@@ -37,7 +39,8 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AdminComponent,
     VideoComponent,
     ProfilSettingsComponent,
-    PartenairesComponent
+    PartenairesComponent,
+    EditArtistesComponent
   ],
   imports: [
     BrowserModule,

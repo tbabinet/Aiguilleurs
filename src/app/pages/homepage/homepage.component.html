@@ -42,7 +42,7 @@
         <h2 [style.color]="colors['main_color']">{{ artisteFocused.nom }}</h2>
         <hr>
         <p *ngFor="let d of descriptionOnFocus">{{ d }}</p>
-        <p><a href="{{ artisteFocused.lien }}">{{ artisteFocused.lien }}</a></p>
+        <p><a href="{{ artisteFocused.lien }}" target="_blank">{{ artisteFocused.lien }}</a></p>
       </perfect-scrollbar>
     </div>
   </div>
