@@ -37,15 +37,24 @@ export class PartenairesComponent implements OnInit {
     this.showModal = !this.showModal;
   }
 
-  ajouterPartenaire(e) {
-    const nom = $(e.target).siblings()[0].value;
-    const image = $(e.target).siblings()[1].files[0].name;
-    const url = $(e.target).siblings()[2].value;
-    this.partenaireProvider.ajouterPartenaire(nom, image, url).subscribe();
+  ajouterPartenaire(nom, image, url) {
+    const i = image.files[0] ? image.files[0].name : '';
+    this.partenaireProvider.ajouterPartenaire(nom, i, url).subscribe(() => {
+      this.showModal = false;
+      this.partenaireProvider.getPartenaire().subscribe(data => {
+        this.partenaires = data;
+        setTimeout(calculHeight, 0);
+      });
+    });
   }
 
   deletePartenaire(id){
-    this.partenaireProvider.deletePartenaire(id).subscribe();
+    this.partenaireProvider.deletePartenaire(id).subscribe(() => {
+      this.partenaireProvider.getPartenaire().subscribe(data => {
+        this.partenaires = data;
+        setTimeout(calculHeight, 0);
+      });
+    });
   }
 }
 

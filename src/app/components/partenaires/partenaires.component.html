@@ -21,7 +21,7 @@
       <input class="input-group-text" type="text" placeholder="Nom" #nom />
       <input class="input-group-text" type="file" name="file" placeholder="Image" #image />
       <input class="input-group-text" type="text" placeholder="Lien facebook / site web / ..." #url />
-      <button type="submit" (click)="action == 'add' ? ajouterPartenaire($event) : modifierPartenaire($event)">Valider</button>
+      <button type="submit" (click)="action == 'add' ? ajouterPartenaire(nom.value, image, url.value) : modifierPartenaire(nom.value, image, url.value)">Valider</button>
     </form>
   </div>
 </div>
