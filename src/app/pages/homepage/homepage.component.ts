@@ -30,6 +30,7 @@ import { PartenairesService } from '../../services/partenaires.service';
 })
 export class HomepageComponent implements OnInit {
 
+  hidePortfolio: boolean = null;
   scrolled: boolean = false;
   affiche: string = "";
   video: string = "";
@@ -92,9 +93,14 @@ export class HomepageComponent implements OnInit {
     }
   }
 
+  
   selectArtiste(artiste : Artiste) {
     this.artisteFocused = artiste;
     this.descriptionOnFocus = artiste.description.split('\n');
+  }
+
+  closePortfolio(){
+    this.artisteFocused = null;
   }
 
 }

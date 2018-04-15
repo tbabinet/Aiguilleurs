@@ -39,14 +39,18 @@
     <div class="img-container" [style.backgroundImage]="'url('+ artisteFocused.photo +')'"></div>
     <div class="description">
       <perfect-scrollbar>
-        <h2 [style.color]="colors['main_color']">{{ artisteFocused.nom }}</h2>
+        <h2 [style.color]="colors['main_color']">{{ artisteFocused.nom }}
+          <i id="close-btn" class="fa fa-times-circle" (click)="closePortfolio()"></i>
+        </h2>
         <hr>
         <p *ngFor="let d of descriptionOnFocus">{{ d }}</p>
         <p><a href="{{ artisteFocused.lien }}" target="_blank">{{ artisteFocused.lien }}</a></p>
       </perfect-scrollbar>
     </div>
   </div>
+
   <div class="loader" *ngIf="!artistes && !connectionError"><svg width="200px"  height="200px"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid" class="lds-eclipse" style="background: none;"><path stroke="none" d="M10 50A40 40 0 0 0 90 50A40 42 0 0 1 10 50" fill="#e1a533" transform="rotate(108 50 51)"><animateTransform attributeName="transform" type="rotate" calcMode="linear" values="0 50 51;360 50 51" keyTimes="0;1" dur="1s" begin="0s" repeatCount="indefinite"></animateTransform></path></svg></div>
+
   <div id="liste-artistes">
     <div class="artiste" (click)="selectArtiste(a)" [ngx-scroll-to]="'#artistes'" *ngFor="let a of artistes">
       <div class="artiste-image" [style.backgroundImage]="'url('+ a.photo +')'"></div>

@@ -159,6 +159,11 @@ nav .nav-item:last-child a::after {
   font-weight: normal;
 }
 
+#close-btn{
+  position: relative;
+  float: right; 
+}
+
 #artistes>.portfolio>.description hr {
   margin-bottom: 30px;
   border-width: .5px;
