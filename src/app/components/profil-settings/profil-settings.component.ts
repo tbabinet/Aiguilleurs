@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FileService } from '../../services/files.service';
 import { AuthService } from '../../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'profil-settings',
@@ -11,7 +12,7 @@ export class ProfilSettingsComponent implements OnInit {
 
   colors: {main_color: string, second_color: string} = {main_color: '', second_color: ''};
 
-  constructor(private fsProvider: FileService, private userProvider: AuthService) { }
+  constructor(private router: Router, private fsProvider: FileService, private userProvider: AuthService) { }
 
   ngOnInit() {
     this.fsProvider.getColors().subscribe(colors => {
@@ -20,7 +21,11 @@ export class ProfilSettingsComponent implements OnInit {
   }
 
   changePassword(oldPassword: string, newPassword: string) {
-    this.userProvider.changePassword(oldPassword, newPassword).subscribe();
+    this.userProvider.changePassword(oldPassword, newPassword).subscribe(() => {
+      alert('Votre mot de passe a été modifié !');
+      localStorage.clear();
+      this.router.navigateByUrl('/connexion');
+    });
   }
 
   changeMainColor(color: string) {

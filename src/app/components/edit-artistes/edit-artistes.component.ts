@@ -2,6 +2,7 @@ import { Component, Input, AfterViewChecked } from '@angular/core';
 import * as $ from 'jquery';
 import { Artiste } from '../../interfaces/artiste';
 import { ArtistesService } from '../../services/artistes.service';
+import { url_api } from '../../../environments/environment';
 
 @Component({
   selector: 'edit-artistes',
@@ -16,6 +17,8 @@ export class EditArtistesComponent implements AfterViewChecked {
   showModal: boolean = false;
   selectedArtiste: Artiste;
   action: string;
+  accessToken: string = localStorage.getItem('accessToken');
+  form_url: string = url_api + '/Containers/artistes/upload?access_token=' + this.accessToken;
 
   constructor(private artisteProvider: ArtistesService) {
     $(window).resize(calculHeight);
@@ -41,7 +44,8 @@ export class EditArtistesComponent implements AfterViewChecked {
   }
 
   ajouterArtiste(nom, style, description, photo, lien) {
-    this.artisteProvider.ajouterArtiste(nom, style, description, photo, lien).subscribe((artiste) => {
+    let p = photo.files[0] ? photo.files[0].name : '';
+    this.artisteProvider.ajouterArtiste(nom, style, description, p, lien).subscribe((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
@@ -51,7 +55,8 @@ export class EditArtistesComponent implements AfterViewChecked {
   }
 
   modifierArtiste(nom, style, description, photo, lien) {
-    this.artisteProvider.modifierArtiste(this.selectedArtiste.id, nom, style, description, photo, lien).subscribe((artiste) => {
+    let p = photo.files[0] ? photo.files[0].name : '';
+    this.artisteProvider.modifierArtiste(this.selectedArtiste.id, nom, style, description, p, lien).subscribe((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;

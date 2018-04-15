@@ -24,11 +24,12 @@ export class ArtistesService {
 
   ajouterArtiste(nom, style, description, photo, lien) {
     const accessToken = localStorage.getItem('accessToken');
+    const p = `${url_api}/Containers/artistes/download/${photo}`;
     return this.http.post<Artiste>(`${url_api}/artistes?access_token=${accessToken}`, {
       nom: nom,
       styleMusical: style,
       description: description,
-      photo: photo,
+      photo: p,
       lien: lien
     });
   }
