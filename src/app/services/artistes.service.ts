@@ -47,7 +47,7 @@ export class ArtistesService {
       json['description'] = description;
     }
     if(photo) {
-      json['photo'] = photo;
+      json['photo'] = `${url_api}/Containers/artistes/download/${photo}`;
     }
     if(lien) {
       json['lien'] = lien;
