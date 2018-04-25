@@ -26,7 +26,7 @@
   <p class="error" *ngIf="connectionError"><i class="fa fa-exclamation-triangle"></i><br />Veuillez vérifier votre connexion internet.</p>
 </div>
 <div id="fb-video">
-  <app-video src="{{ video }}"></app-video>
+  <app-video src="{{ video }}" ></app-video>
 </div>
 <section id="artistes" [style.backgroundColor]="colors['main_color']">
   <h1>ARTISTES</h1>
@@ -36,12 +36,16 @@
     </span>
   </div>
   <div class="portfolio" *ngIf="artisteFocused" [@slideDown]="artisteFocused">
-    <div class="img-container" [style.backgroundImage]="'url('+ artisteFocused.photo +')'"></div>
+    <div class="video-container">
+      <iframe class="video-player" src="https://www.youtube.com/embed/KEW_FwR6t70?list=PLDLwMRpOcwhY0Jw3senS5Fqvy-dkdIgRp"></iframe>
+    </div>
+    
+
+
     <div class="description">
       <perfect-scrollbar>
-        <h2 [style.color]="colors['main_color']">{{ artisteFocused.nom }}
-          <i id="close-btn" class="fa fa-times-circle" (click)="closePortfolio()"></i>
-        </h2>
+        <i [style.color]="colors['main_color']" id="close-btn" class="fa fa-times-circle" (click)="closePortfolio()"></i>
+        <h2 [style.color]="colors['main_color']">{{ artisteFocused.nom }}</h2>
         <hr>
         <p *ngFor="let d of descriptionOnFocus">{{ d }}</p>
         <p><a href="{{ artisteFocused.lien }}" target="_blank">{{ artisteFocused.lien }}</a></p>

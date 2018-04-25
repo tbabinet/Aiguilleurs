@@ -138,10 +138,20 @@ nav .nav-item:last-child a::after {
   height: 400px;
 }
 
-#artistes>.portfolio>.img-container {
+#artistes>.portfolio>.video-container {
   background-position: center center;
-  background-size: cover;
+  width: 100%;
+  height: 100%;
 }
+
+#artistes>.portfolio>.video-container>.video-player {
+  background-position: center center;
+  width:inherit;
+  height: inherit;
+
+}
+
+
 
 #artistes>.portfolio>.description {
   position: relative;
@@ -160,8 +170,9 @@ nav .nav-item:last-child a::after {
 }
 
 #close-btn{
+  margin : 10px;
   position: relative;
-  float: right; 
+  float: right ; 
 }
 
 #artistes>.portfolio>.description hr {
