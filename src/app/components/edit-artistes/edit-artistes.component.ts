@@ -1,8 +1,9 @@
-import { Component, Input, AfterViewChecked } from '@angular/core';
+import { Component, Input, AfterViewChecked, Sanitizer } from '@angular/core';
 import * as $ from 'jquery';
 import { Artiste } from '../../interfaces/artiste';
 import { ArtistesService } from '../../services/artistes.service';
 import { url_api } from '../../../environments/environment';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'edit-artistes',
@@ -43,9 +44,9 @@ export class EditArtistesComponent implements AfterViewChecked {
     });
   }
 
-  ajouterArtiste(nom, style, description, photo, lien) {
+  ajouterArtiste(nom, style, description, photo, lien, video) {
     let p = photo.files[0] ? photo.files[0].name : '';
-    this.artisteProvider.ajouterArtiste(nom, style, description, p, lien).subscribe((artiste) => {
+    this.artisteProvider.ajouterArtiste(nom, style, description, p, lien, video).subscribe((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
@@ -54,9 +55,9 @@ export class EditArtistesComponent implements AfterViewChecked {
     });
   }
 
-  modifierArtiste(nom, style, description, photo, lien) {
+  modifierArtiste(nom, style, description, photo, lien, video) {
     let p = photo.files[0] ? photo.files[0].name : '';
-    this.artisteProvider.modifierArtiste(this.selectedArtiste.id, nom, style, description, p, lien).subscribe((artiste) => {
+    this.artisteProvider.modifierArtiste(this.selectedArtiste.id, nom, style, description, p, lien, video).subscribe((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
@@ -73,5 +74,7 @@ function calculHeight() {
     let width = $(a).css('width');
     $(a).css("height", width);
   }
+
+
 
 }

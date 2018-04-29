@@ -4,5 +4,6 @@ export interface Artiste {
   styleMusical: string,
   description: string,
   photo: string,
-  lien: string
+  lien: string,
+  video: string
 }

@@ -37,11 +37,9 @@
   </div>
   <div class="portfolio" *ngIf="artisteFocused" [@slideDown]="artisteFocused">
     <div class="video-container">
-      <iframe class="video-player" src="https://www.youtube.com/embed/KEW_FwR6t70?list=PLDLwMRpOcwhY0Jw3senS5Fqvy-dkdIgRp"></iframe>
+      <iframe class="video-player" [src]='videoUrlSanitized(artisteFocused.video)'></iframe>
     </div>
     
-
-
     <div class="description">
       <perfect-scrollbar>
         <i [style.color]="colors['main_color']" id="close-btn" class="fa fa-times-circle" (click)="closePortfolio()"></i>

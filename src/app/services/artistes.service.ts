@@ -22,7 +22,7 @@ export class ArtistesService {
     return this.http.delete(`${url_api}/artistes/${id}?access_token=${accessToken}`);
   }
 
-  ajouterArtiste(nom, style, description, photo, lien) {
+  ajouterArtiste(nom, style, description, photo, lien, video) {
     const accessToken = localStorage.getItem('accessToken');
     const p = `${url_api}/Containers/artistes/download/${photo}`;
     return this.http.post<Artiste>(`${url_api}/artistes?access_token=${accessToken}`, {
@@ -30,11 +30,12 @@ export class ArtistesService {
       styleMusical: style,
       description: description,
       photo: p,
-      lien: lien
-    });
+      lien: lien,
+      video: video
+   });
   }
 
-  modifierArtiste(id, nom, style, description, photo, lien) {
+  modifierArtiste(id, nom, style, description, photo, lien, video) {
     const accessToken = localStorage.getItem('accessToken');
     let json = {};
     if(nom) {
@@ -51,6 +52,9 @@ export class ArtistesService {
     }
     if(lien) {
       json['lien'] = lien;
+    }
+    if(video) {
+      json['video'] = video;
     }
     return this.http.patch<Artiste>(`${url_api}/artistes/${id}?access_token=${accessToken}`, json);
   }
