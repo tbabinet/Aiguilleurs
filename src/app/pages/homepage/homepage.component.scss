@@ -148,8 +148,12 @@ nav .nav-item:last-child a::after {
   background-position: center center;
   width:inherit;
   height: inherit;
-
 }
+
+#artistes>.portfolio>.img-container {
+  background-position: center center;
+  background-size: cover;
+  }
 
 
 

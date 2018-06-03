@@ -36,9 +36,13 @@
     </span>
   </div>
   <div class="portfolio" *ngIf="artisteFocused" [@slideDown]="artisteFocused">
-    <div class="video-container">
+    <div *ngIf="artisteFocused.video;else img" class="video-container">
       <iframe class="video-player" [src]='videoUrlSanitized(artisteFocused.video)'></iframe>
     </div>
+
+    <ng-template #img>
+        <div class="img-container" [style.backgroundImage]="'url('+ artisteFocused.photo +')'"></div>
+    </ng-template>
     
     <div class="description">
       <perfect-scrollbar>
