@@ -39,7 +39,7 @@ export class HomepageComponent implements OnInit {
   artisteFocused: Artiste;
   descriptionOnFocus: string[];
   connectionError: boolean = false;
-  colors: {main_color: string, second_color: string} = {main_color: "#01868b", second_color: "#333"};
+  colors: {main_color: string, second_color: string} = {main_color: "#ed6f7d", second_color: "#333"};
   partenaires: Partenaire[];
 
   constructor(private http:HttpClient, private artisteProvider:ArtistesService, private partenaireProvider: PartenairesService, private fs:FileService, private sanitizer : DomSanitizer) {

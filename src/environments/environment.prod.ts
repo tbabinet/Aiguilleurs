@@ -2,4 +2,4 @@ export const environment = {
   production: true
 };
 
-export const url_api = 'https://les-aiguilleurs.herokuapp.com/api';
+export const url_api = 'https://lesaiguilleurs.fr/api';
