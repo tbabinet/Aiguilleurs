@@ -10,7 +10,7 @@
 
 nav {
   position: fixed;
-  z-index: 10;
+  z-index: 100;
   top: 0;
   width: 100%;
   background-color: rgba(0, 0, 0, 0);
@@ -43,7 +43,7 @@ nav .nav-item a {
 }
 
 nav .nav-item a:hover {
-  color: #01868b;
+  color: #ed6f7d;
   text-decoration: none;
 }
 
@@ -72,7 +72,7 @@ nav .nav-item:last-child a::after {
 }
 
 #artistes {
-  background-color: #01868b;
+  background-color: #ed6f7d;
   padding: 100px 0;
   text-align: center;
 }
@@ -147,7 +147,7 @@ nav .nav-item:last-child a::after {
 #artistes>.portfolio>.video-container>.video-player {
   background-position: center center;
   width:inherit;
-  height: inherit;
+  height: 100%;
 }
 
 #artistes>.portfolio>.img-container {
@@ -162,7 +162,7 @@ nav .nav-item:last-child a::after {
 }
 
 #artistes>.portfolio>.description h2 {
-  color: #01868b;
+  color: #ed6f7d;
   text-align: left;
   letter-spacing: 3px;
   font-size: 2em;
@@ -174,7 +174,10 @@ nav .nav-item:last-child a::after {
 #close-btn{
   margin : 10px;
   position: relative;
-  float: right ; 
+  top: 5px;
+  font-size: 18px;
+  float: right;
+  cursor: pointer;
 }
 
 #artistes>.portfolio>.description hr {
@@ -302,7 +305,7 @@ nav .nav-item:last-child a::after {
 
 #liste-artistes .artiste>.artiste-caption>h3 {
   font-size: 1.25em;
-  color: #01868b;
+  color: #ed6f7d;
   letter-spacing: 1px;
   margin: 0;
   margin-bottom: 10px;
@@ -348,7 +351,7 @@ nav .nav-item:last-child a::after {
     letter-spacing: 1px;
     text-transform: uppercase;
     span {
-      color: #01868b;
+      color: #ed6f7d;
       font-size: 1em;
       font-family: 'Dosis', sans-serif;
     }
@@ -364,7 +367,7 @@ nav .nav-item:last-child a::after {
     letter-spacing: 1px;
     color: #fff;
     span.blue {
-      color: #01868b;
+      color: #ed6f7d;
       font-weight: 700;
       font-size: 1.2em;
       margin: 0 10px;
@@ -375,7 +378,7 @@ nav .nav-item:last-child a::after {
     a {
       font-size: 1em;
       font-weight: bold;
-      color: #01868b;
+      color: #ed6f7d;
     }
   }
   .more {
@@ -509,6 +512,9 @@ footer {
       &>div {
       width: 100%;
       height: 200px;
+      }
+      &>.video-container {
+        height: 50%;
       }
     }
   }

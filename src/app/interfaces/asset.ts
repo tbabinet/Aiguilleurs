@@ -1,4 +1,4 @@
-export interface File {
+export interface Asset {
   id: number,
   name: string,
   container: string,
