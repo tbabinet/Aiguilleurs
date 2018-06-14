@@ -8,8 +8,8 @@ import * as $ from 'jquery';
 })
 export class VideoComponent {
 
-  @Input()
-  src: string;
+  @Input() src: string;
+  @Input() poster: string;
 
   show: boolean = true;
 

@@ -35,6 +35,8 @@ export class HomepageComponent implements OnInit {
   scrolled: boolean = false;
   affiche: string = "";
   video: string = "";
+  videoPoster: string = "";
+  videos = [];
   artistes: Artiste[];
   artisteFocused: Artiste;
   descriptionOnFocus: string[];
@@ -46,13 +48,11 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
-    $(window).resize(calculHeight);
 
     this.artisteProvider.getArtistes().subscribe(data => {
       if(data) {
         this.connectionError = false;
         this.artistes = data;
-        setTimeout(calculHeight, 0);
       }
     }, err => {
       console.log(err);
@@ -67,6 +67,12 @@ export class HomepageComponent implements OnInit {
             break;
           case 'video':
             this.video = `${url_api}/Containers/media/download/${f.url}`;
+            break;
+          case 'videoPoster':
+            this.videoPoster = `${url_api}/Containers/media/download/${f.url}`;
+            break;
+          case 'videos':
+            this.videos = JSON.parse(f.url);
             break;
           default:
             break;
@@ -110,12 +116,4 @@ export class HomepageComponent implements OnInit {
 
 }
 
-function calculHeight() {
-  let artistes = document.getElementsByClassName('artiste');
-  let width = $(artistes[0]).css('width');
-  for (let i = 0; i < artistes.length; i++) {
-    let a = artistes[i];
-    $(a).css("height", width);
-  }
-}
 

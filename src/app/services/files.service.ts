@@ -22,9 +22,26 @@ export class FileService {
     return this.http.post<Asset>(`${url_api}/assets/update?where=%7B%22name%22%3A%20%22affiche%22%7D&access_token=${accessToken}`, {url: name});
   }
 
+  uploadAffiche(affiche: File) {
+    const accessToken = localStorage.getItem('accessToken');
+    let formData = new FormData();
+    formData.set('file', affiche, affiche.name);
+    return this.http.post(`${url_api}/Containers/media/upload?access_token=${accessToken}`, formData);
+  }
+
   setVideo(name: string) {
     const accessToken = localStorage.getItem('accessToken');
     return this.http.post<Asset>(`${url_api}/assets/update?where=%7B%22name%22%3A%20%22video%22%7D&access_token=${accessToken}`, {url: name});
+  }
+
+  setVideoPoster(name: string) {
+    const accessToken = localStorage.getItem('accessToken');
+    return this.http.post<Asset>(`${url_api}/assets/update?where=%7B%22name%22%3A%20%22videoPoster%22%7D&access_token=${accessToken}`, {url: name});
+  }
+
+  setVideos(videos) {
+    const accessToken = localStorage.getItem('accessToken');
+    return this.http.post<Asset>(`${url_api}/assets/update?where=%7B%22name%22%3A%20%22videos%22%7D&access_token=${accessToken}`, {url: JSON.stringify(videos)});
   }
 
   setMainColor(color: string) {

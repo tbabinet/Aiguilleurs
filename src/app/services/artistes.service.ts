@@ -36,27 +36,26 @@ export class ArtistesService {
   }
 
   modifierArtiste(id, nom, style, description, photo, lien, video) {
+    return new Promise((resolve, reject) => {
+      const accessToken = localStorage.getItem('accessToken');
+      this.http.get<Artiste>(`${url_api}/artistes/${id}`).subscribe(artiste =>{
+        let formData = {};
+        formData['nom'] = nom;
+        formData['styleMusical'] = style;
+        formData['description'] = description;
+        formData['photo'] = photo !== '' ? `${url_api}/Containers/artistes/download/${photo}` : artiste.photo;
+        formData['lien'] = lien;
+        formData['video'] = video;
+        this.http.put<Artiste>(`${url_api}/artistes/${id}?access_token=${accessToken}`, formData).subscribe(success => resolve(success));
+      });
+    });
+  }
+
+  uploadAffiche(file: File) {
     const accessToken = localStorage.getItem('accessToken');
-    let json = {};
-    if(nom) {
-      json['nom'] = nom;
-    }
-    if(style) {
-      json['styleMusical'] = style;
-    }
-    if(description) {
-      json['description'] = description;
-    }
-    if(photo) {
-      json['photo'] = `${url_api}/Containers/artistes/download/${photo}`;
-    }
-    if(lien) {
-      json['lien'] = lien;
-    }
-    if(video) {
-      json['video'] = video;
-    }
-    return this.http.patch<Artiste>(`${url_api}/artistes/${id}?access_token=${accessToken}`, json);
+    let formData = new FormData();
+    formData.set('file', file, file.name);
+    return this.http.post(`${url_api}/Containers/artistes/upload?access_token=${accessToken}`, formData);
   }
 
 }

@@ -19,7 +19,6 @@ import { AuthGuard } from './guards/auth.guard';
 
 import { PerfectScrollbarModule, PERFECT_SCROLLBAR_CONFIG, PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
-import { UICarouselModule } from 'ui-carousel';
 
 import { VideoComponent } from './components/video/video.component';
 import { ProfilSettingsComponent } from './components/profil-settings/profil-settings.component';
@@ -49,8 +48,7 @@ const DEFAULT_PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
     AppRoutingModule,
     HttpClientModule,
     PerfectScrollbarModule,
-    ScrollToModule.forRoot(),
-    UICarouselModule
+    ScrollToModule.forRoot()
   ],
   providers: [
     {

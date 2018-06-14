@@ -1,4 +1,4 @@
-import { Component, Input, AfterViewChecked, Sanitizer } from '@angular/core';
+import { Component, Input, Sanitizer } from '@angular/core';
 import * as $ from 'jquery';
 import { Artiste } from '../../interfaces/artiste';
 import { ArtistesService } from '../../services/artistes.service';
@@ -10,7 +10,7 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './edit-artistes.component.html',
   styleUrls: ['./edit-artistes.component.scss']
 })
-export class EditArtistesComponent implements AfterViewChecked {
+export class EditArtistesComponent {
 
   @Input()
   artistes: Artiste[];
@@ -22,12 +22,7 @@ export class EditArtistesComponent implements AfterViewChecked {
   form_url: string = url_api + '/Containers/artistes/upload?access_token=' + this.accessToken;
 
   constructor(private artisteProvider: ArtistesService) {
-    $(window).resize(calculHeight);
    }
-
-  ngAfterViewChecked() {
-    calculHeight();
-  }
 
   toggleModal(artiste, action) {
     this.action = action;
@@ -39,42 +34,34 @@ export class EditArtistesComponent implements AfterViewChecked {
     this.artisteProvider.deleteArtiste(idArtiste).subscribe(() => {
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
-        setTimeout(calculHeight, 0);
       });
     });
   }
 
   ajouterArtiste(nom, style, description, photo, lien, video) {
     let p = photo.files[0] ? photo.files[0].name : '';
+    if (p) {
+      this.artisteProvider.uploadAffiche(photo.files[0]).subscribe();
+    }
     this.artisteProvider.ajouterArtiste(nom, style, description, p, lien, video).subscribe((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
-        setTimeout(calculHeight, 0);
       });
     });
   }
 
   modifierArtiste(nom, style, description, photo, lien, video) {
     let p = photo.files[0] ? photo.files[0].name : '';
-    this.artisteProvider.modifierArtiste(this.selectedArtiste.id, nom, style, description, p, lien, video).subscribe((artiste) => {
+    if (p) {
+      this.artisteProvider.uploadAffiche(photo.files[0]).subscribe();
+    }
+    this.artisteProvider.modifierArtiste(this.selectedArtiste.id, nom, style, description, p, lien, video).then((artiste) => {
       this.showModal = false;
       this.artisteProvider.getArtistes().subscribe(data => {
         this.artistes = data;
-        setTimeout(calculHeight, 0);
       });
     });
   }
 }
 
-function calculHeight() {
-  let artistes = document.getElementsByClassName('artiste');
-  for (let i = 0; i < artistes.length; i++) {
-    let a = artistes[i];
-    let width = $(a).css('width');
-    $(a).css("height", width);
-  }
-
-
-
-}
