@@ -39,9 +39,6 @@ export class PartenairesComponent implements OnInit {
 
   ajouterPartenaire(nom, image, url) {
     const i = image.files[0] ? image.files[0].name : '';
-    if (i) {
-      this.partenaireProvider.uploadImage(image.files[0]).subscribe();
-    }
     this.partenaireProvider.ajouterPartenaire(nom, i, url).subscribe(() => {
       this.showModal = false;
       this.partenaireProvider.getPartenaire().subscribe(data => {

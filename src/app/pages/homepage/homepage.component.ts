@@ -8,7 +8,7 @@ import { ArtistesService } from '../../services/artistes.service';
 import { FileService } from '../../services/files.service';
 import { Partenaire } from '../../interfaces/partenaires';
 import { PartenairesService } from '../../services/partenaires.service';
-import { DomSanitizer } from '@angular/platform-browser';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-homepage',
@@ -35,8 +35,7 @@ export class HomepageComponent implements OnInit {
   scrolled: boolean = false;
   affiche: string = "";
   video: string = "";
-  videoPoster: string = "";
-  videos = [];
+  sanitizedVideo: SafeResourceUrl;
   artistes: Artiste[];
   artisteFocused: Artiste;
   descriptionOnFocus: string[];
@@ -48,11 +47,13 @@ export class HomepageComponent implements OnInit {
   }
 
   ngOnInit() {
+    $(window).resize(calculHeight);
 
     this.artisteProvider.getArtistes().subscribe(data => {
       if(data) {
         this.connectionError = false;
         this.artistes = data;
+        setTimeout(calculHeight, 0);
       }
     }, err => {
       console.log(err);
@@ -66,13 +67,8 @@ export class HomepageComponent implements OnInit {
             this.affiche = `${url_api}/Containers/media/download/${f.url}`;
             break;
           case 'video':
-            this.video = `${url_api}/Containers/media/download/${f.url}`;
-            break;
-          case 'videoPoster':
-            this.videoPoster = `${url_api}/Containers/media/download/${f.url}`;
-            break;
-          case 'videos':
-            this.videos = JSON.parse(f.url);
+            this.video = `${f.url}`;
+            this.sanitizedVideo = this.videoUrlSanitized(this.video)
             break;
           default:
             break;
@@ -116,4 +112,12 @@ export class HomepageComponent implements OnInit {
 
 }
 
+function calculHeight() {
+  let artistes = document.getElementsByClassName('artiste');
+  let width = $(artistes[0]).css('width');
+  for (let i = 0; i < artistes.length; i++) {
+    let a = artistes[i];
+    $(a).css("height", width);
+  }
+}
 

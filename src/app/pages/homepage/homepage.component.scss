@@ -60,16 +60,16 @@ nav .nav-item:last-child a::after {
   content: "";
 }
 
-#fb-video {
+#video-div{
   background-color: #000;
+  width: 100%;
   text-align: center;
-  padding: 20px 0;
-  app-video {
-    video {
-      width: 90%;
-      max-width: 700px;
-    }
-  }
+}
+
+#yt-video {
+
+  height: 40em;
+  width: 60%;
 }
 
 #artistes {
@@ -232,7 +232,6 @@ nav .nav-item:last-child a::after {
   position: relative;
   height: auto;
   width: 25%;
-  height: 25vw;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -326,7 +325,7 @@ nav .nav-item:last-child a::after {
   flex-flow: wrap;
   justify-content: left; 
    .video{
-    padding: 20px;
+    padding: 20px 40px;
     width: 25%;
     height: 100%;
     //background-color: #000;
@@ -448,8 +447,7 @@ footer {
   #artistes {
     #liste-artistes {
       .artiste {
-        width: calc(100% / 3);
-        height: calc(100vw / 3);
+        width: 33.3333333%;
       }
     }
   }
@@ -460,7 +458,6 @@ footer {
     #liste-artistes {
       .artiste {
         width: 50%;
-        height: 50vw;
       }
     }
   }
@@ -483,7 +480,7 @@ footer {
   }
 }
 
-@media all and (max-width: 1200px) {
+@media all and (max-width: 1100px) {
   #videos{
      .video{
       width: 33%;
@@ -491,7 +488,7 @@ footer {
   }
 }
 
-@media all and (max-width: 800px) {
+@media all and (max-width: 700px) {
   #videos{
      .video{
         width: 50%;
@@ -499,7 +496,7 @@ footer {
   }
 }
 
-@media all and (max-width: 530px) {
+@media all and (max-width: 600px) {
   #videos{
      .video{
         width: 100%;

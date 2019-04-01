@@ -15,7 +15,6 @@
     position: relative;
     height: auto;
     width: 25%;
-    height: 25vw;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -184,8 +183,7 @@
 @media all and (max-width: 800px) {
   #liste-artistes {
     .artiste {
-      width: calc(100% / 3);
-      height: calc(100vw / 3);
+      width: 33.3333333%;
     }
   }
 }
@@ -194,7 +192,6 @@
   #liste-artistes {
     .artiste {
       width: 50%;
-      height: 50vw;
     }
   }
 }
@@ -203,7 +200,6 @@
   #liste-artistes {
     .artiste {
       width: 100%;
-      height: 100vw;
     }
   }
 }

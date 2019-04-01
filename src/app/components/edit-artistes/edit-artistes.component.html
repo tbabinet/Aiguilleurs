@@ -24,7 +24,9 @@
     <input class="input-group-text" type="text" placeholder="Style musical" #style [value]="selectedArtiste.styleMusical ? selectedArtiste.styleMusical : ''" />
     <textarea class="input-group-text" type="text" placeholder="Description" #description [value]="selectedArtiste.description ? selectedArtiste.description : ''"></textarea>
     <input class="input-group-text" type="text" placeholder="Lien EMBED youtube" #video [value]="selectedArtiste.video ? selectedArtiste.video : ''" />
-    <input class="input-group-text" type="file" name="file" #photo />
+    <form action="{{ form_url }}" method="POST" id="artiste_form" target="_blank" enctype="multipart/form-data">
+      <input class="input-group-text" type="file" name="file" #photo />
+    </form>
     <input class="input-group-text" type="text" placeholder="Lien facebook / site web / ..." #lien [value]="selectedArtiste.lien ? selectedArtiste.lien : ''" />
     <button type="submit" form="artiste_form" (click)="action == 'add' ? ajouterArtiste(nom.value, style.value, description.value, photo, lien.value, video.value) : modifierArtiste(nom.value, style.value, description.value, photo, lien.value, video.value)">Valider</button>
   </div>
